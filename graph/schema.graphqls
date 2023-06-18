@@ -42,7 +42,7 @@ type Jurusan {
 }
 
 type JurusanDetail {
-  id: ID!
+  id: Int!
   jurusan_id: Int!
   jurusan_detail: String!
 }
@@ -50,6 +50,19 @@ type JurusanDetail {
 type User {
   id: ID!
   name: String!
+}
+
+type Siswa {
+  id_siswa: ID!
+  nis: Int!
+  nama_siswa: String!
+}
+
+type SiswaDetail {
+  id_siswa: Int!
+  nis: Int!
+  nama_siswa: String!
+  absensi_detail: [Absensi!]
 }
 
 type Query {
@@ -61,6 +74,8 @@ type Query {
   bookdetail: [BookDetail!]!
   jurusan: [Jurusan!]!
   jurusandetail: [JurusanDetail!]!
+  siswa: [Siswa!]
+  siswadetail(nis: Float!): SiswaDetail!
 }
 
 input NewTodo {

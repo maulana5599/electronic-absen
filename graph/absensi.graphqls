@@ -1,0 +1,11 @@
+type Absensi {
+  id: ID!
+  nis: Int!
+  matapelajaran_id: Int!
+  guru_id: Int!
+  is_hadir: Boolean!
+}
+
+extend type Query {
+  absensi: [Absensi!]!
+}

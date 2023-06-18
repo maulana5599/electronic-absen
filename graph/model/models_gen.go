@@ -18,6 +18,12 @@ type NewTodo struct {
 	UserID string `json:"userId"`
 }
 
+type TambahGuru struct {
+	Nip        string `json:"nip"`
+	NamaGuru   string `json:"nama_guru"`
+	TahunMasuk string `json:"tahun_masuk"`
+}
+
 type Todo struct {
 	ID   string `json:"id"`
 	Text string `json:"text"`

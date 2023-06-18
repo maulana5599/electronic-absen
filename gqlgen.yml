@@ -71,4 +71,12 @@ models:
     model: "github.com/maulana5599/golang-gqlgen/models.Jurusan"
   JurusanDetail:
     model: "github.com/maulana5599/golang-gqlgen/models.JurusanDetail"
+  Siswa:
+    model: "github.com/maulana5599/golang-gqlgen/models.Siswa"
+  SiswaDetail:
+    model: "github.com/maulana5599/golang-gqlgen/models.SiswaDetail"
+  Absensi:
+    model: "github.com/maulana5599/golang-gqlgen/models.Absensi"
+  Guru:
+    model: "github.com/maulana5599/golang-gqlgen/models.Guru"
 

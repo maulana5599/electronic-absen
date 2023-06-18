@@ -1,0 +1,20 @@
+type Guru {
+  id: ID!
+  nip: String!
+  nama_guru: String!
+  tahun_masuk: String!
+}
+
+input TambahGuru {
+  nip: String!
+  nama_guru: String!
+  tahun_masuk: String!
+}
+
+extend type Query {
+  guru: [Guru!]!
+}
+
+extend type Mutation {
+  tambahGuru(input: TambahGuru!): Guru!
+}

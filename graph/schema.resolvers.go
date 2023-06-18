@@ -89,14 +89,40 @@ func (r *queryResolver) Jurusandetail(ctx context.Context) ([]*models.JurusanDet
 	return result, nil
 }
 
+// Siswa is the resolver for the siswa field.
+func (r *queryResolver) Siswa(ctx context.Context) ([]*models.Siswa, error) {
+	var result []*models.Siswa
+	config.DB.Find(&result)
+	return result, nil
+}
+
+// Siswadetail is the resolver for the siswadetail field.
+func (r *queryResolver) Siswadetail(ctx context.Context, nis float64) (*models.SiswaDetail, error) {
+	var result *models.SiswaDetail
+	config.DB.Preload("Abensi").Where("nis = ?", nis).First(&result)
+	return result, nil
+}
+
+// AbsensiDetail is the resolver for the absensi_detail field.
+func (r *siswaDetailResolver) AbsensiDetail(ctx context.Context, obj *models.SiswaDetail) ([]*models.Absensi, error) {
+	nis := obj.NIS
+	var result []*models.Absensi
+	config.DB.Where("nis = ?", nis).Find(&result)
+	return result, nil
+}
+
 // Mutation returns generated.MutationResolver implementation.
 func (r *Resolver) Mutation() generated.MutationResolver { return &mutationResolver{r} }
 
 // Query returns generated.QueryResolver implementation.
 func (r *Resolver) Query() generated.QueryResolver { return &queryResolver{r} }
 
+// SiswaDetail returns generated.SiswaDetailResolver implementation.
+func (r *Resolver) SiswaDetail() generated.SiswaDetailResolver { return &siswaDetailResolver{r} }
+
 type mutationResolver struct{ *Resolver }
 type queryResolver struct{ *Resolver }
+type siswaDetailResolver struct{ *Resolver }
 
 // !!! WARNING !!!
 // The code below was going to be deleted when updating resolvers. It has been copied here so you have
